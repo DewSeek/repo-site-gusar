@@ -22,6 +22,15 @@
 			border-style: hidden;
 		}
 
+		.nav a:hover {
+			color: gray;
+			font-weight: bold;
+		}
+
+		.nav a:visited {
+			color: gray;
+		}
+		
 		.container {
 			position: relative;
 			height: 100vh;
@@ -55,7 +64,6 @@
 			color: #ffffff;
 			text-decoration: none;
 			text-transform: uppercase;
-			font-weight: bold;
 			margin-right: 20px;
 		}
 
@@ -65,7 +73,7 @@
 			left: 0;
 			right: 0;
 			bottom: 0;
-			background: url(background.jpg);
+			background: url(https://i.imgur.com/M9i164n.png);
 			transition: opacity 1s ease-in-out;
 			opacity: 0;
 			background-size: cover;
@@ -96,11 +104,28 @@
 			opacity: 1;
 		}
 
-		.slide img {
+		.slide .img {
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
 			opacity: 0;
+		}
+		.slide .icon {
+			position: absolute;
+			top: 30%;
+  			left: 50%;
+  			transform: translateX(-50%);
+		}
+		.slide .title {
+			position: absolute;
+			top: 37%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 80%;
+			text-align: center;
+			color: #ffffff;
+			font-size: larger;
+			font-weight: bold;
 		}
 
 		.slide .caption {
@@ -111,6 +136,7 @@
 			width: 80%;
 			max-width: 500px;
 			background-color: rgba(0, 0, 0, 0.8);
+			border-radius: 25px;
 			padding: 20px;
 			text-align: center;
 			color: #ffffff;
@@ -140,7 +166,7 @@
 <body>
 	<div class="container">
 		<header class="header">
-			<img src="logo.jpg" alt="Logo" class="logo">
+			<img src="https://i.imgur.com/27mkkG7.jpeg" alt="Logo" class="logo">
 			<nav class="nav">
 				<button id="homeButton"><li><a href="#home">Головна</a></li></button>
 				<button id="aboutButton"><li><a href="#about">Про нас</a></li></button>
@@ -154,7 +180,15 @@
 		<div class="slider-container" id=".slider-container">
 			<div class="slider">
 				<div class="slide active" id="activeslide">
-					<img src="slide1.jpg" alt="Slide 1" id="slide-home">
+					<div class = "img"> 
+						<img src="https://i.imgur.com/M9i164n.png" alt="Slide 1" id="slide-home">
+					</div>
+					<div class="icon">
+						<img src="https://i.imgur.com/38x9XYR.png" width="50" id="icon1">
+					</div>
+					<div class="title">
+						<p>Головна</p>
+					</div>
 					<div class="caption">
 						<p>Ласкаво просимо до нашого IT-проєкту! Ми - команда експертів, присвячених технологічному прогресу та розробці інноваційних рішень. Наша мета - створення продуктів, які трансформують бізнес та полегшують повсякденне життя людей. Ми віримо в силу технологій та їх потенціал у зміні світу навколо нас.</p>
 					</div>
@@ -201,6 +235,8 @@
   			var servicesButton = document.getElementById("servicesButton");
   			var contactButton = document.getElementById("contactButton");
   			var slideText = document.querySelector(".slide .caption");
+			var slideTitle = document.querySelector(".slide .title");
+			var slideIcon = document.querySelector("#icon1");
 
 
   			homeButton.addEventListener("click", function() {
@@ -210,6 +246,9 @@
 					setTimeout(function() {
 						slideText.style.transition = "0.25s";
 						slideText.textContent = "Ласкаво просимо до нашого IT-проєкту! Ми - команда експертів, присвячених технологічному прогресу та розробці інноваційних рішень. Наша мета - створення продуктів, які трансформують бізнес та полегшують повсякденне життя людей. Ми віримо в силу технологій та їх потенціал у зміні світу навколо нас.";
+						slideTitle.textContent = "Головна";
+						slideIcon.src = "https://i.imgur.com/38x9XYR.png"
+						slideIcon.width = "50";
 						slideText.style.opacity = 1;
 						slideText.style.transform = "translate(-50%, -50%)";
     				}, 100);
@@ -223,6 +262,9 @@
 					setTimeout(function() {
 						slideText.style.transition = "0.25s";
 						slideText.textContent = "Наш проєкт є інноваційним рішенням в галузі IT. Ми спеціалізуємося на розробці програмного забезпечення, веб-додатків та мобільних додатків. Наша команда складається з талановитих розробників, дизайнерів та професіоналів з досвідом у сфері технологій. Ми пишаємося своїми досягненнями і портфоліо успішних проєктів. Наші експерти використовують найновіші технології та інструменти для створення інноваційних рішень, які відповідають найвищим стандартам якості.";
+						slideTitle.textContent = "Про нас";
+						slideIcon.src = "https://i.imgur.com/sDkAr9f.png";
+						slideIcon.width = "40";
 						slideText.style.opacity = 1;
 						slideText.style.transform = "translate(-50%, -50%)";
     				}, 100);
@@ -236,6 +278,9 @@
 					setTimeout(function() {
 						slideText.style.transition = "0.25s";
 						slideText.textContent = "Наша команда надає широкий спектр послуг у сфері розробки програмного забезпечення. Ми займаємося розробкою веб-додатків, мобільних додатків, веб-сайтів та електронної комерції. Ми також спеціалізуємося на послугах у сфері інтернет-маркетингу та пошукової оптимізації. Наші рішення розробляються з урахуванням потреб клієнта та забезпечують найвищу якість. Ми працюємо в тісному співробітництві з нашими клієнтами, щоб забезпечити успіх їхніх проєктів та досягти їхніх бізнес-цілей.";
+						slideTitle.textContent = "Послуги";
+						slideIcon.src = "https://i.imgur.com/R1nXYXT.png";
+						slideIcon.width = "50";
 						slideText.style.opacity = 1;
 						slideText.style.transform = "translate(-50%, -50%)";
     				}, 100);
@@ -249,6 +294,9 @@
 					setTimeout(function() {
 						slideText.style.transition = "0.25s";
 						slideText.textContent = "Щоб отримати додаткову інформацію про наші послуги та співпрацю, будь ласка, зв'яжіться з нами за допомогою наступних контактних даних: Телефон: +380XXXXXXXXX Електронна пошта: info@example.com. Наша команда завжди готова допомогти вам з усіма питаннями та запитами. Не соромтеся зв'язатися з нами, і ми з радістю допоможемо вам.";
+						slideTitle.textContent = "Контактні дані";
+						slideIcon.src = "https://i.imgur.com/iXhtFcM.png";
+						slideIcon.width = "50";
 						slideText.style.opacity = 1;
 						slideText.style.transform = "translate(-50%, -50%)";
     				}, 100);
